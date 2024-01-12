@@ -1,6 +1,6 @@
-package com.amadeus.Repository;
+package com.amadeus.amadeus.Repository;
 
-import com.amadeus.Models.Airport;
+import com.amadeus.amadeus.Models.Airport;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

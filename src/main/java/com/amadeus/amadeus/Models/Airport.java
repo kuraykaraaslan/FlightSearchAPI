@@ -1,4 +1,4 @@
-package com.amadeus.Models;
+package com.amadeus.amadeus.Models;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
@@ -21,5 +21,8 @@ public class Airport {
     @Getter
     private String city;
 
+    public Airport() {
+
+    }
 }
 

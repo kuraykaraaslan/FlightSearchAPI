@@ -1,6 +1,6 @@
-package com.amadeus.Services;
+package com.amadeus.amadeus.Services;
 
-import com.amadeus.Models.Airport;
+import com.amadeus.amadeus.Models.Airport;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.amadeus.Repository.AirportRepository;
+import com.amadeus.amadeus.Repository.AirportRepository;
 
 @Service
 public class AirportService {

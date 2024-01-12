@@ -1,8 +1,8 @@
-package com.amadeus.Controllers;
+package com.amadeus.amadeus.Controllers;
 
-import com.amadeus.Models.Flight;
-import com.amadeus.Services.FlightService;
-import com.amadeus.Views.Auth.Login;
+import com.amadeus.amadeus.Models.Flight;
+import com.amadeus.amadeus.Services.FlightService;
+import com.amadeus.amadeus.Response.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,7 +27,7 @@ public class FlightController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getFlightDetails(@PathVariable("id") String id){
         // Return response using Login class's responseBuilder method
-        return Login.responseBuilder("Requested Flight details are given here.", HttpStatus.OK, flightService.getFlight(id));
+        return Response.responseBuilder("Requested Flight details are given here.", HttpStatus.OK, flightService.getFlight(id));
     }
 
     // Read All Flight Details from DB

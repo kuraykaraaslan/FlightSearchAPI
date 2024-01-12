@@ -1,13 +1,14 @@
-package com.amadeus.Controllers;
+package com.amadeus.amadeus.Controllers;
 
-import com.amadeus.Models.Airport;
-import com.amadeus.Services.AirportService;
-import com.amadeus.Views.Auth.Login;
+import com.amadeus.amadeus.Models.Airport;
+import com.amadeus.amadeus.Services.AirportService;
+import com.amadeus.amadeus.Response.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 @RestController
@@ -25,7 +26,7 @@ public class AirportController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getAirportDetails(@PathVariable("id") String id){
         // Return response using Login class's responseBuilder method
-        return Login.responseBuilder("Requested Airport details are given here.", HttpStatus.OK, airportService.getAirport(id));
+        return Response.responseBuilder("Requested Airport details are given here.", HttpStatus.OK, airportService.getAirport(id));
     }
 
     // Read All Airport Details from DB

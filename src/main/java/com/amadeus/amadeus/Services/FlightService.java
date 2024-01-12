@@ -1,6 +1,6 @@
-package com.amadeus.Services;
+package com.amadeus.amadeus.Services;
 
-import com.amadeus.Models.Flight;
+import com.amadeus.amadeus.Models.Flight;
 
 import java.time.LocalDateTime;
 import java.util.List;

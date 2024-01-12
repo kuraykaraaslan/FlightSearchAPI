@@ -1,9 +1,9 @@
-package com.amadeus.Components;
+package com.amadeus.amadeus.Components;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
-import com.amadeus.Models.Flight;
+import com.amadeus.amadeus.Models.Flight;
 
 public class SyncFlights {
 
