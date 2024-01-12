@@ -1,4 +1,4 @@
-﻿![Amedeus Logo](static/logo.jpg)
+﻿![Amedeus Logo](static/logo.png)
 
 # Amadeus API
 
