@@ -1,15 +1,17 @@
 package com.amadeus.amadeus.Models;
 
-import java.math.BigDecimal;
-import java.security.Timestamp;
+import com.amadeus.amadeus.Repository.AirportRepository;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@AllArgsConstructor
+@Data
 @Table(name = "airports")
 public class Airport {
     @Id
@@ -17,12 +19,34 @@ public class Airport {
     private Long id;
 
     @Column(name = "city")
-    @Setter
-    @Getter
     private String city;
 
-    public Airport() {
 
+    void Airport(String city) {
+        this.city = city;
     }
-}
 
+    static void updateAirportById(Long id, String city) {
+        Airport airport = AirportRepository.findAirportById(id).orElseThrow();
+        airport.setCity(city);
+        airport.save();
+    }
+
+    static void deleteAirportById(Long id) {
+        Airport airport = Airport
+        airport.delete();
+    }
+
+    static void createAirport(String city) {
+        Airport airport = new Airport();
+        airport.setCity(city);
+        airport.save();
+    }
+
+
+    static Airport findByCity(String city) {
+        return Airport.findByCity(city);
+    }
+
+
+}

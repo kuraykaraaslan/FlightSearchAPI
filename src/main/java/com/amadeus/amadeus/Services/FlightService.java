@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.amadeus.Repository.FlightRepository;
+import com.amadeus.amadeus.Repository.FlightRepository;
 
 @Service
 public class FlightService {
@@ -28,12 +28,12 @@ public class FlightService {
         return flightRepository.save(Flight);
     }
 
-    public void deleteFlight(Long id) {
+    public void deleteFlightById(Long id) {
         flightRepository.deleteById(id);
     }
 
-    public Flight getFlight(String id) {
-        return flightRepository.findById(id);
+    public Flight getFlight(Long id) {
+        return flightRepository.findFlightById(id);
     }
 
     public void createFlight(Flight flight) {
@@ -44,7 +44,7 @@ public class FlightService {
         flightRepository.save(flight);
     }
 
-    public void deleteFlight(String id) {
+    public void deleteFlight(Long id) {
         flightRepository.deleteById(id);
     }
 

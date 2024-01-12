@@ -9,11 +9,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
-    Flight findById(String id);
+    Flight findFlightById(Long id);
+    List<Flight> findFlightsByDepartureAirport(String departureAirport);
+    List<Flight> findFlightsByArrivalAirport(String arrivalAirport);
+    List<Flight> findFlightsByDepartureDateTime(LocalDateTime departureDateTime);
+    List<Flight> findFlightsByReturnDateTime(LocalDateTime returnDateTime);
+    List<Flight> findFlightsByPrice(Double price);
 
-    void deleteById(String id);
+    void updateFlightById(Long id);
 
-    List<Flight> searchFlights(String departureCity, String arrivalCity, LocalDateTime departureDateTime,
+    void deleteFlightById(Long id);
+
+    List<Flight> searchFlights(String departureAirport, String arrivalAirport, LocalDateTime departureDateTime,
             LocalDateTime returnDateTime);
-    
+
 }

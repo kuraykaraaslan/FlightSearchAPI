@@ -28,12 +28,9 @@ public class AirportService {
         return airportRepository.save(airport);
     }
 
-    public void deleteAirport(Long id) {
-        airportRepository.deleteById(id);
-    }
 
-    public Airport getAirport(String id) {
-        return airportRepository.findById(id);
+    public Airport getAirport(Long id) {
+        return airportRepository.findById(id).get();
     }
 
     public void createAirport(Airport airport) {
@@ -44,7 +41,7 @@ public class AirportService {
         airportRepository.save(airport);
     }
 
-    public void deleteAirport(String id) {
+    public void deleteAirport(Long id) {
         airportRepository.deleteById(id);
     }
 

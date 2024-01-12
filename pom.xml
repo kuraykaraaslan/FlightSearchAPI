@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.amadeus</groupId>
 	<artifactId>amadeus</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>Amadeus</name>
 	<description>The Amadeus API is a Spring Boot application designed to facilitate the search and retrieval of flight information. It provides a RESTful API that allows users to perform various operations related to flights and airports.</description>
 	<properties>
@@ -56,11 +56,13 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
 		<dependency>
 			<groupId>jakarta.persistence</groupId>
 			<artifactId>jakarta.persistence-api</artifactId>
-			<version>3.2.0-M1</version>
+			<version>3.1.0</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
