@@ -1,0 +1,82 @@
+[
+    {
+      "id": 1,
+      "departureAirport": 1,
+      "arrivalAirport": 2,
+      "departureDateTime": "2024-01-15T12:00:00",
+      "returnDateTime": "2024-01-20T15:00:00",
+      "price": 500.0
+    },
+    {
+      "id": 2,
+      "departureAirport": 3,
+      "arrivalAirport": 4,
+      "departureDateTime": "2024-02-10T08:30:00",
+      "returnDateTime": "2024-02-15T11:45:00",
+      "price": 600.0
+    },
+    {
+      "id": 3,
+      "departureAirport": 5,
+      "arrivalAirport": 6,
+      "departureDateTime": "2024-03-05T14:15:00",
+      "returnDateTime": "2024-03-10T18:30:00",
+      "price": 550.0
+    },
+    {
+      "id": 4,
+      "departureAirport": 7,
+      "arrivalAirport": 8,
+      "departureDateTime": "2024-04-20T10:00:00",
+      "returnDateTime": "2024-04-25T13:45:00",
+      "price": 700.0
+    },
+    {
+      "id": 5,
+      "departureAirport": 9,
+      "arrivalAirport": 10,
+      "departureDateTime": "2024-05-15T16:45:00",
+      "returnDateTime": null,
+      "price": 450.0
+    },
+    {
+      "id": 6,
+      "departureAirport": 11,
+      "arrivalAirport": 12,
+      "departureDateTime": "2024-06-10T09:30:00",
+      "returnDateTime": "2024-06-15T12:15:00",
+      "price": 800.0
+    },
+    {
+      "id": 7,
+      "departureAirport": 13,
+      "arrivalAirport": 14,
+      "departureDateTime": "2024-07-25T13:45:00",
+      "returnDateTime": null,
+      "price": 650.0
+    },
+    {
+      "id": 8,
+      "departureAirport": 15,
+      "arrivalAirport": 16,
+      "departureDateTime": "2024-08-20T11:15:00",
+      "returnDateTime": "2024-08-25T14:45:00",
+      "price": 550.0
+    },
+    {
+      "id": 9,
+      "departureAirport": 17,
+      "arrivalAirport": 18,
+      "departureDateTime": "2024-09-15T15:30:00",
+      "returnDateTime": null,
+      "price": 700.0
+    },
+    {
+      "id": 10,
+      "departureAirport": 19,
+      "arrivalAirport": 20,
+      "departureDateTime": "2024-10-10T17:00:00",
+      "returnDateTime": "2024-10-15T20:45:00",
+      "price": 600.0
+    }
+  ]
