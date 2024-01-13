@@ -1,21 +1,32 @@
-package com.amadeus.amadeus.Repository;
-
-import com.amadeus.amadeus.Models.Airport;
+package com.amadeus.amadeus.Repository; 
+import com.amadeus.amadeus.Models.Airport; 
+import org.springframework.data.jpa.repository.JpaRepository; 
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import com.amadeus.amadeus.Models.Airport;
 
+/**
+ * This interface represents a repository for managing airports.
+ */
 public interface AirportRepository extends JpaRepository<Airport, Long> {
-    List<Airport> searchAirportsByCity(String city);
+    // Additional query methods can be added here if needed
     
-    Airport findAirportById(Long id);
-    List<Airport> findAirportsByCity(String city);
-
-    void updateAirportById(Long id);
+    /**
+     * Retrieves an airport by its ID
+     * 
+     * @return the airport found with the given ID
+     */
+    public Airport findById();
     
-
-    void deleteAirportById(Long id);
-    void deleteAirportByCity(String city);
-
-
+    /**
+     * Retrieves all airports
+     * 
+     * @return a list of all airports
+     */
+    public List<Airport> findAll();
+    
+    /**
+     * Retrieves an alternative airport if the requested one is not found
+     * 
+     * @return an alternative airport
+     */
+    public Airport orElse();
 }

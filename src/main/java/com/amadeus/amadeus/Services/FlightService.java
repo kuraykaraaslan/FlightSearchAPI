@@ -1,60 +1,60 @@
+// Filename: FlightService.java
 package com.amadeus.amadeus.Services;
-
 import com.amadeus.amadeus.Models.Flight;
+import com.amadeus.amadeus.Repository.FlightRepository;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.amadeus.amadeus.Repository.FlightRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightService {
-    @Autowired
+    private final FlightRepository flightRepository;
 
-    private FlightRepository flightRepository;
+    @Autowired
+    public FlightService(FlightRepository flightRepository) {
+        this.flightRepository = flightRepository;
+    }
 
     public List<Flight> getAllFlights() {
         return flightRepository.findAll();
     }
 
-    public Flight getFlightById(Long id) {
-        return flightRepository.findById(id).orElse(null);
+    public List<Flight> getFlightById(Long id) {
+        List<Flight> flights = new ArrayList<>();
+        Optional<Flight> optionalFlight = flightRepository.findById(id);
+        optionalFlight.ifPresent(flights::add);
+        return flights;
     }
 
-    public Flight saveFlight(Flight Flight) {
-        return flightRepository.save(Flight);
-    }
-
-    public void deleteFlightById(Long id) {
-        flightRepository.deleteById(id);
-    }
-
-    public Flight getFlight(Long id) {
-        return flightRepository.findFlightById(id);
-    }
-
-    public void createFlight(Flight flight) {
-        flightRepository.save(flight);
-    }
-
-    public void updateFlight(Flight flight) {
-        flightRepository.save(flight);
+    public Flight saveFlight(Flight flight) {
+        return flightRepository.save(flight);
     }
 
     public void deleteFlight(Long id) {
         flightRepository.deleteById(id);
     }
 
-    public List<Flight> searchFlights(String departureCity, String arrivalCity, LocalDateTime departureDateTime,
-            LocalDateTime returnDateTime) {
-        return flightRepository.searchFlights(departureCity, arrivalCity, departureDateTime, returnDateTime);
+    public Flight createFlight(Flight flight) {
+        return flightRepository.save(flight);
     }
 
-    public List<Flight> getAllFlight() {
-        return flightRepository.findAll();
+    public Flight updateFlight(Long id, Flight flight) {
+        Optional<Flight> optionalFlight = flightRepository.findById(id);
+        if (optionalFlight.isPresent()) {
+            Flight flightToUpdate = optionalFlight.get();
+            flightToUpdate.setDepartureAirport(flight.getDepartureAirport());
+            flightToUpdate.setArrivalAirport(flight.getArrivalAirport());
+            flightToUpdate.setDepartureDateTime(flight.getDepartureDateTime());
+            flightToUpdate.setReturnDateTime(flight.getReturnDateTime());
+            flightToUpdate.setPrice(flight.getPrice());
+            return flightRepository.save(flightToUpdate);
+        } else {
+            return null;
+        }
     }
-
 }

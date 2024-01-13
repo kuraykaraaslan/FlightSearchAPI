@@ -1,52 +1,67 @@
 package com.amadeus.amadeus.Models;
 
-import com.amadeus.amadeus.Repository.AirportRepository;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
-import lombok.Data;
-
+/**
+ * Represents an airport entity.
+ */
 @Entity
-@Data
-@Table(name = "airports")
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "city")
     private String city;
 
-
-    void Airport(String city) {
-        this.city = city;
+    /**
+     * Empty constructor for Airport class.
+     */
+    public Airport() {
     }
 
-    static void updateAirportById(Long id, String city) {
-        Airport airport = AirportRepository.findAirportById(id).orElseThrow();
-        airport.setCity(city);
-        airport.save();
-    }
-
-    static void deleteAirportById(Long id) {
-        Airport airport = Airport
-        airport.delete();
-    }
-
-    static void createAirport(String city) {
+    /**
+     * Static method to create an Airport object.
+     * @param city The city of the airport
+     * @return The created Airport object
+     */
+    public static Airport createAirport(String city) {
         Airport airport = new Airport();
         airport.setCity(city);
-        airport.save();
+        return airport;
     }
 
-
-    static Airport findByCity(String city) {
-        return Airport.findByCity(city);
+    /**
+     * Getter method for the ID of the airport.
+     * @return The ID of the airport
+     */
+    public Long getId() {
+        return id;
     }
 
+    /**
+     * Setter method for the ID of the airport.
+     * @param id The ID of the airport
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    /**
+     * Getter method for the city of the airport.
+     * @return The city of the airport
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * Setter method for the city of the airport.
+     * @param city The city of the airport
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

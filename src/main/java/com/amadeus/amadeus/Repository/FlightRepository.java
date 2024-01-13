@@ -1,26 +1,34 @@
 package com.amadeus.amadeus.Repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.amadeus.amadeus.Models.Flight;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
+/**
+ * This interface represents a repository for managing Flight entities.
+ * It extends the JpaRepository interface, providing basic CRUD operations for Flight entities.
+ */
 public interface FlightRepository extends JpaRepository<Flight, Long> {
+    // Additional query methods can be added here if needed
+    
+    /**
+     * Retrieves a Flight entity by its ID.
+     *
+     * @return The Flight entity with the specified ID, or null if not found.
+     */
+    public Flight findById();
 
-    Flight findFlightById(Long id);
-    List<Flight> findFlightsByDepartureAirport(String departureAirport);
-    List<Flight> findFlightsByArrivalAirport(String arrivalAirport);
-    List<Flight> findFlightsByDepartureDateTime(LocalDateTime departureDateTime);
-    List<Flight> findFlightsByReturnDateTime(LocalDateTime returnDateTime);
-    List<Flight> findFlightsByPrice(Double price);
+    /**
+     * Retrieves all Flight entities.
+     *
+     * @return A list of all Flight entities.
+     */
+    public List<Flight> findAll();
 
-    void updateFlightById(Long id);
-
-    void deleteFlightById(Long id);
-
-    List<Flight> searchFlights(String departureAirport, String arrivalAirport, LocalDateTime departureDateTime,
-            LocalDateTime returnDateTime);
-
+    /**
+     * Retrieves a default Flight entity if no entity is found.
+     *
+     * @return The default Flight entity.
+     */
+    public Flight orElse();
 }

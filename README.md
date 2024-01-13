@@ -69,6 +69,13 @@ The Amadeus API provides a RESTful API that allows users to perform various oper
 | `GET /flights` | Returns a list of all flights |
 | `GET /flights/{id}` | Returns the flight with the specified ID |
 | `GET /flights/{id}/airports` | Returns a list of all airports that the flight with the specified ID departs from and arrives at |
+| `POST /airports` | Creates a new airport |
+| `POST /flights` | Creates a new flight |
+| `PUT /airports/{id}` | Updates the airport with the specified ID |
+| `PUT /flights/{id}` | Updates the flight with the specified ID |
+| `DELETE /airports/{id}` | Deletes the airport with the specified ID |
+| `DELETE /flights/{id}` | Deletes the flight with the specified ID |
+
 
 ### Examples
 

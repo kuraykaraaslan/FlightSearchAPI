@@ -1,58 +1,85 @@
 package com.amadeus.amadeus.Controllers;
 
-import com.amadeus.amadeus.Models.Airport;
-import com.amadeus.amadeus.Services.AirportService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import com.amadeus.amadeus.Models.Airport;
+import com.amadeus.amadeus.Requests.AirportRequest;
+import com.amadeus.amadeus.Repository.AirportRepository;
+
+/**
+ * This class is a controller for handling airport-related operations.
+ */
 @RestController
-@RequestMapping("/api/airport")
+@RequestMapping("api/airports")
 public class AirportController {
 
-    private final AirportService airportService;
-
     @Autowired
-    public AirportController(AirportService airportService) {
-        this.airportService = airportService;
-    }
+    private AirportRepository airportRepository;
 
-    // Read Specific Airport Details from DB
-    @GetMapping("/{id}")
-    public ResponseEntity<Airport> getAirportDetails(@PathVariable("id") Long id) {
-        Airport airport = airportService.getAirport(id);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(airport);
-    }
-
-    // Read All Airport Details from DB
+    /**
+     * Get all airports.
+     *
+     * @return List of all airports.
+     */
     @GetMapping
-    public List<Airport> getAllAirportDetails() {
-        return airportService.getAllAirport();
+    public List<Airport> getAllAirports() {
+        return airportRepository.findAll();
     }
 
-    @PostMapping("/")
-    public ResponseEntity<String> createAirportDetails(@RequestBody Airport airport) {
-        airportService.createAirport(airport);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Airport created successfully.");
+    /**
+     * Create a new airport.
+     *
+     * @param airportRequest The request body containing the airport details.
+     * @return The created airport.
+     */
+    @PostMapping
+    public Airport createAirport(@RequestBody AirportRequest airportRequest) {
+        Airport newAirport = new Airport();
+        newAirport.setCity(airportRequest.getCity());
+
+        return airportRepository.save(newAirport);
     }
 
-    @PutMapping("/")
-    public ResponseEntity<String> updateAirportDetails(@RequestBody Airport airport) {
-        airportService.updateAirport(airport);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Airport updated successfully.");
+    /**
+     * Get an airport by its ID.
+     *
+     * @param id The ID of the airport to retrieve.
+     * @return The airport with the given ID if found, or null if not found.
+     */
+    @GetMapping("/{id}")
+    @Secured("ROLE_USER")
+    public Airport getAirportById(@PathVariable Long id) {
+        return airportRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Update an existing airport.
+     *
+     * @param id             The ID of the airport to update.
+     * @param airportRequest The request body containing the updated airport details.
+     * @return The updated airport.
+     */
+    @PutMapping("/{id}")
+    @Secured("ROLE_USER")
+    public Airport updateAirport(@PathVariable Long id, @RequestBody AirportRequest airportRequest) {
+        Airport airport = airportRepository.findById(id).orElse(null);
+        airport.setCity(airportRequest.getCity());
+        return airportRepository.save(airport);
+    }
+
+    /**
+     * Delete an airport by its ID.
+     *
+     * @param id The ID of the airport to delete.
+     */
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAirportDetails(@PathVariable("id") Long id) {
-        airportService.deleteAirport(id);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Airport deleted successfully.");
+    @Secured("ROLE_USER")
+    public void deleteAirport(@PathVariable Long id) {
+        airportRepository.deleteById(id);
     }
+
 }
